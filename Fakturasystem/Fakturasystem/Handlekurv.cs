@@ -16,14 +16,30 @@ namespace Fakturasystem
         public void PrintReceipt()
         {
             decimal total = 0;
+            Console.WriteLine("------Kvittering------");
             foreach (Ibillable item in cart)
             {
-                Product product = item as Product;
-                Console.WriteLine(product.Navn);
-                Console.WriteLine(item.GetTotal());
+                SimpleProduct simple = item as SimpleProduct;
+                WeightedProduct weighted = item as WeightedProduct;
+
+                if (simple != null)
+                {
+                    Console.WriteLine("Navn: " + simple.Navn);
+                    Console.WriteLine($"Antall: {simple.antall}");
+                    Console.WriteLine("Pris: " + item.GetTotal());
+                }
+                else
+                {
+                    Console.WriteLine("Navn: " + weighted.Navn);
+                    Console.WriteLine($"Vekt: {weighted.weight}");
+                    Console.WriteLine("Pris: " + item.GetTotal());
+                }
+
+                Console.WriteLine();
+
                 total += item.GetTotal();
             }
-            Console.WriteLine(total);
+            Console.WriteLine($"Totalpris: {total}\n");
         }
     }
 }
