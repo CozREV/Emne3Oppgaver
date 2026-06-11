@@ -16,6 +16,7 @@ namespace ToDoList
 
         public void ShowItem()
         {
+            Console.WriteLine("------Vis oppgaver------");
             foreach (TaskItem item in items)
             {
                 Console.WriteLine($"Tittel: {item.Title}\n" +
@@ -28,7 +29,7 @@ namespace ToDoList
         {
            foreach (TaskItem item in items)
             {
-                if (item.Title == title)
+                if (item.Title.ToLower() == title.ToLower())
                 {
                     item.Completed();
                     break;
@@ -43,12 +44,22 @@ namespace ToDoList
 
         public List<TaskItem> Search(string keyword)
         {
-            return items.Where(i => i.Title.Contains(keyword)).ToList();
+            return items.Where(i => i.Title.ToLower().Contains(keyword.ToLower())).ToList();
         }
 
         public int CountCompleted()
         {
             return items.Count(i => i.IsDone == true);
+        }
+
+        public List<TaskItem> GetItems()
+        {
+            return items;
+        }
+
+        public void LoadItems(List<TaskItem> list)
+        {
+            items = list;
         }
     }
 }

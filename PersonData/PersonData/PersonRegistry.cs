@@ -24,6 +24,7 @@ namespace PersonData
 
         public void ShowPerson()
         {
+            Console.WriteLine("------Personer------\n");
             foreach (Person people in person)
             {
                 Console.WriteLine($"Navn: {people.Name}\n" +

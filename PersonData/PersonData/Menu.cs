@@ -13,6 +13,7 @@ namespace PersonData
 
         private void AddPerson()
         {
+            Console.WriteLine("------Legg til person------");
             Console.Write("Navn: ");
             string name = Console.ReadLine();
             Console.Write("Alder: ");
@@ -36,6 +37,7 @@ namespace PersonData
 
             while (isTrue)
             {
+                Console.WriteLine("------Hovedside------");
                 Console.WriteLine("1. Legg til person\n" +
                                   "2. Vis personer\n" +
                                   "3. Lagre til fil\n" +

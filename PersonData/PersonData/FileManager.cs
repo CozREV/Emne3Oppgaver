@@ -16,6 +16,7 @@ namespace PersonData
             }
 
             File.WriteAllLines("personer.txt", lines);
+            Console.WriteLine("Lagret til fil \n");
         }
 
         public List<Person> LoadFromFile()
@@ -25,6 +26,8 @@ namespace PersonData
                 List<Person> people = new List<Person>();
 
                 string[] lines = File.ReadAllLines("personer.txt");
+
+                Console.WriteLine("Lastet fra fil \n");
 
                 foreach (string line in lines)
                 {
