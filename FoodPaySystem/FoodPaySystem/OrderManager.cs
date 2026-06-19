@@ -25,6 +25,16 @@ namespace FoodPaySystem
             }
         }
 
+        public List<Order> GetOrders()
+        {
+            return orders;
+        }
+
+        public void LoadOrders(List<Order> list)
+        {
+            orders = list;
+        }
+
         public int GetTotalRevenue()
         {
             return orders.Sum(o => o.Price);

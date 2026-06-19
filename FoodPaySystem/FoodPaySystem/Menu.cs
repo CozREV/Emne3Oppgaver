@@ -43,8 +43,10 @@ namespace FoodPaySystem
                                   "2. Add Order\n" +
                                   "3. Load from file\n" +
                                   "4. Save to file\n" +
-                                  "5. Revenue\n" +
-                                  "6. Avslutt\n");
+                                  "5. Total revenue\n" +
+                                  "6. Most popular Pizza\n" +
+                                  "7. Orders after 6PM\n" +
+                                  "8. Avslutt\n");
 
                 string input = Console.ReadLine();
 
@@ -59,17 +61,32 @@ namespace FoodPaySystem
                         break;
 
                     case "3":
-
+                        orderManager.LoadOrders(fileManager.LoadFile());
                         break;
 
                     case "4":
-
+                        fileManager.SaveFile(orderManager.GetOrders());
                         break;
 
                     case "5":
-
+                        int revenue = orderManager.GetTotalRevenue();
+                        Console.WriteLine($"Total revenue: {revenue}");
                         break;
+
                     case "6":
+                        string popular = orderManager.GetMostPopularPizza();
+                        Console.WriteLine($"Most popular pizza: {popular}");
+                        break;
+
+                    case "7":
+                        List<Order> after6PM = orderManager.GetOrdersAfter6PM();
+                        foreach ( Order o in after6PM)
+                        {
+                            Console.WriteLine($"{o.CustomerName} - {o.PizzaType} - {o.OrderTime}");
+                        }
+                        break;
+
+                    case "8":
                         isTrue = false;
                         Console.WriteLine("Have a good day");
                         break;
