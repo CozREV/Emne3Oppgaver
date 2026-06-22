@@ -48,17 +48,16 @@ namespace FoodPaySystem
 
         public string GetMostPopularPizza()
         {
-            try
-            {
-                var grouped = orders.GroupBy(o => o.PizzaType)
-                                    .OrderByDescending(g  => g.Count())
-                                    .First();
-                return grouped.Key;
-            }
-            catch (FormatException e)
+
+            if(orders.Count == 0)
             {
                 return "no orders";
             }
+
+            var grouped = orders.GroupBy(o => o.PizzaType)
+                                .OrderByDescending(g  => g.Count())
+                                .First();
+            return grouped.Key;
         }
     }
 }

@@ -80,9 +80,9 @@ namespace FoodPaySystem
                         break;
 
                     case "6":
-                        Console.WriteLine("------Most Popular------");
+                        Console.WriteLine("------Most Popular Pizza Type------");
                         string popular = orderManager.GetMostPopularPizza();
-                        Console.WriteLine($"Most popular pizza: {popular}\n");
+                        Console.WriteLine($"{popular}\n");
                         break;
 
                     case "7":
