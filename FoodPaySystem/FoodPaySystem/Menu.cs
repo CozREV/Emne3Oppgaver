@@ -11,6 +11,8 @@ namespace FoodPaySystem
 
         private void AddOrder()
         {
+            Console.WriteLine("------Add Order------");
+
             Console.Write("Pizza type: ");
             string pizzaType = Console.ReadLine();
 
@@ -39,6 +41,7 @@ namespace FoodPaySystem
 
             while (isTrue)
             {
+                Console.WriteLine("------Main Menu------");
                 Console.WriteLine("1. Show all orders\n" +
                                   "2. Add Order\n" +
                                   "3. Load from file\n" +
@@ -46,7 +49,7 @@ namespace FoodPaySystem
                                   "5. Total revenue\n" +
                                   "6. Most popular Pizza\n" +
                                   "7. Orders after 6PM\n" +
-                                  "8. Avslutt\n");
+                                  "8. Exit\n");
 
                 string input = Console.ReadLine();
 
@@ -61,29 +64,35 @@ namespace FoodPaySystem
                         break;
 
                     case "3":
+                        Console.WriteLine("File loaded");
                         orderManager.LoadOrders(fileManager.LoadFile());
                         break;
 
                     case "4":
+                        Console.WriteLine("File saved");
                         fileManager.SaveFile(orderManager.GetOrders());
                         break;
 
                     case "5":
+                        Console.WriteLine("------Total Revenue------");
                         int revenue = orderManager.GetTotalRevenue();
-                        Console.WriteLine($"Total revenue: {revenue}");
+                        Console.WriteLine($"Total revenue: {revenue}\n");
                         break;
 
                     case "6":
+                        Console.WriteLine("------Most Popular------");
                         string popular = orderManager.GetMostPopularPizza();
-                        Console.WriteLine($"Most popular pizza: {popular}");
+                        Console.WriteLine($"Most popular pizza: {popular}\n");
                         break;
 
                     case "7":
+                        Console.WriteLine("------Orders after 6PM------");
                         List<Order> after6PM = orderManager.GetOrdersAfter6PM();
                         foreach ( Order o in after6PM)
                         {
                             Console.WriteLine($"{o.CustomerName} - {o.PizzaType} - {o.OrderTime}");
                         }
+                        Console.WriteLine();
                         break;
 
                     case "8":

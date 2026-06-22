@@ -16,6 +16,7 @@ namespace FoodPaySystem
 
         public void ShowOrders()
         {
+            Console.WriteLine("------Orders------");
             foreach (Order order in orders)
             {
                 Console.WriteLine($"Customer: {order.CustomerName}\n" +
@@ -47,10 +48,17 @@ namespace FoodPaySystem
 
         public string GetMostPopularPizza()
         {
-            var grouped = orders.GroupBy(o => o.PizzaType)
-                                .OrderByDescending(g  => g.Count())
-                                .First();
-            return grouped.Key;
+            try
+            {
+                var grouped = orders.GroupBy(o => o.PizzaType)
+                                    .OrderByDescending(g  => g.Count())
+                                    .First();
+                return grouped.Key;
+            }
+            catch (FormatException e)
+            {
+                return "no orders";
+            }
         }
     }
 }
